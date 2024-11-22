@@ -11,6 +11,16 @@ namespace Domain.Entities
         Pending,
         Paid,
         Shipped,
-        Cancelled
+        InTransit,
+        Delivered,
+        //return states
+        ReturnProcessing,
+        ReturnApproved,
+        ProductVerified,
+        ReturnShipped,
+        ReturnInTransit,
+        Returned,
+        ReturnRejected,
+        Cancelled, // any time before 
     }
 }
