@@ -14,7 +14,7 @@ namespace OrderManagement.Domain.Services
             Money totalAmount = order.OrderItems.Sum(item => item.Quantity * item.Product.Price);
             if (payment >= totalAmount)
             {
-                order.SetStatus(OrderStatus.Paid);
+                //order.SetStatus(OrderStatus.Paid);
                 return true;
             }
 

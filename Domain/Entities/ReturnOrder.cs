@@ -13,9 +13,8 @@ namespace Domain.Entities
 
         public Guid OrderRef {  get; init; }
 
-        public ReturnOrder(Order order)
-        {
-            OrderRef=order.Id;
+        public ReturnOrder()
+        { //Todo: Order id to reference set pending
             SetStatus(OrderStatus.ReturnProcessing);
         }
 

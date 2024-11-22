@@ -14,12 +14,6 @@ namespace Domain.Entities
         public Money Price { get; private set; }
         public int Stock {  get; private set; }
 
-        Product(string name, Money price, int stock)
-        {
-            Name = name;
-            Price =price;
-            Stock = stock;
-        }
         public void UpdatePrice(Money price) =>    Price = price;
         public void UpdateStock(int stock) => Stock = stock;
     }

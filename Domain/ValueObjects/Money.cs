@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domain.ValueObjects
 {
-    public record struct Money(decimal Amount, string Currency="INR")
+    public record Money(decimal Amount, string Currency="INR")
     {
         public static Money Zero(string currency) => new Money(0, currency);
 
