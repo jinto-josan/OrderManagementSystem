@@ -1,25 +1,20 @@
-﻿using Domain.ValueObjects;
+﻿using Application.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Application.Entities
 {
     public class Product
     {
         public Guid Id { get; set; }
-        public string Name { get; private set; }
+        public string Name { get;  set; }
         public Money Price { get; private set; }
         public int Stock {  get; private set; }
 
-        Product(string name, Money price, int stock)
-        {
-            Name = name;
-            Price =price;
-            Stock = stock;
-        }
+        
         public void UpdatePrice(Money price) =>    Price = price;
         public void UpdateStock(int stock) => Stock = stock;
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Application.Entities
 {
     public class ReturnOrder:Order
     {
@@ -13,9 +13,8 @@ namespace Domain.Entities
 
         public Guid OrderRef {  get; init; }
 
-        public ReturnOrder(Order order)
-        {
-            OrderRef=order.Id;
+        public ReturnOrder()
+        {//order reference not set
             SetStatus(OrderStatus.ReturnProcessing);
         }
 

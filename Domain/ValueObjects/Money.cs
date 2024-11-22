@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.ValueObjects
+namespace Application.ValueObjects
 {
-    public record struct Money(decimal Amount, string Currency="INR")
+    public record Money(decimal Amount, string Currency="INR")
     {
         public static Money Zero(string currency) => new Money(0, currency);
 

@@ -1,8 +1,8 @@
-﻿using Domain.Entities;
-using Domain.Extensions;
-using Domain.ValueObjects;
+﻿using Application.Entities;
+using Application.Extensions;
+using Application.ValueObjects; 
 
-namespace OrderManagement.Domain.Services
+namespace OrderManagement.Application.Services
 {
     public class PaymentService
     {
@@ -14,7 +14,7 @@ namespace OrderManagement.Domain.Services
             Money totalAmount = order.OrderItems.Sum(item => item.Quantity * item.Product.Price);
             if (payment >= totalAmount)
             {
-                order.SetStatus(OrderStatus.Paid);
+                //order.SetStatus(OrderStatus.Paid);
                 return true;
             }
 
