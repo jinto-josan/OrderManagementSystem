@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Contexts
 {
-    public class OrderDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
 
-        public OrderDbContext() { }
+        public ApplicationDbContext() { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

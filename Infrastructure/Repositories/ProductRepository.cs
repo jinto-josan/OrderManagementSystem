@@ -1,17 +1,14 @@
 ﻿using Domain.Entities;
+using Infrastructure.Contexts;
 
 namespace Infrastructure.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-        public Task AddOrderByAsync(Order order)
+        private readonly ApplicationDbContext _context;
+        public ProductRepository(ApplicationDbContext context):base(context)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Order> GetOrderByIdAsync(Guid id)
-        {
-            throw new NotImplementedException();
+            _context = context;
         }
     }
 }

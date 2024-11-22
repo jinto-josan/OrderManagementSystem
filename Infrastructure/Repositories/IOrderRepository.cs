@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public interface IOrderRepository
+    public interface IOrderRepository:IBaseRepository<Order>
     {
-        public Task<Order> GetOrderByIdAsync(Guid id);
-        public Task AddOrderByAsync(Order order);
+        
     }
 }

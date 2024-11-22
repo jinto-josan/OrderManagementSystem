@@ -1,17 +1,15 @@
 ﻿using Domain.Entities;
+using Infrastructure.Contexts;
 
 namespace Infrastructure.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public Task AddOrderByAsync(Order order)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<Order> GetOrderByIdAsync(Guid id)
+        private readonly ApplicationDbContext _context;
+        public UserRepository(ApplicationDbContext context):base(context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
     }
 }
