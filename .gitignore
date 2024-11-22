@@ -8,3 +8,5 @@
 /**/bin/Debug/net8.0
 /Practice
 /PracticeWebApp
+/Infrastructure/Migrations
+/Infrastructure/localDBFiles
