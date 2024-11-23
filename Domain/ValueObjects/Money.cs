@@ -11,6 +11,12 @@ namespace Domain.ValueObjects
 {
     public record Money(decimal Amount, string Currency="INR")
     {
+        //Todo: currency validations
+        //string Currency { get { return Currency; } set {
+        //        if (Currency.Length!=3)
+        //            throw new InvalidDataException("CURRENCY CODE SHOULD BE in LENGTH3");
+        //        Currency = value;
+        //    } }
         public static Money Zero(string currency) => new Money(0, currency);
 
         public static Money operator +(Money left, Money right)

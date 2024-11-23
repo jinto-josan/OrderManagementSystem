@@ -18,7 +18,11 @@ namespace Infrastructure.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=localDBFiles/localdb.db");
+            if (!File.Exists("../Infrastructure/localDBFiles/localdb.db"))
+                throw new FileNotFoundException("SQLliteFileNotFound");
+            optionsBuilder.UseSqlite("Data Source=../Infrastructure/localDBFiles/localdb.db");
+
+
             //base.OnConfiguring(optionsBuilder);
         }
 

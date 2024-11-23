@@ -1,4 +1,8 @@
 
+using Infrastructure.Contexts;
+using Services.Extenstions;
+using Services.Mapper;
+
 namespace Api
 {
     public class Program
@@ -8,6 +12,11 @@ namespace Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<ApplicationDbContext>();
+            builder.Services.ConfigureAutoMapperServices();
+            builder.Services.ConfigureBsnsServices();
+
+            builder.Services.AddHttpClient();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

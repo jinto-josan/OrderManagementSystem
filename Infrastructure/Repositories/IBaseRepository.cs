@@ -9,11 +9,13 @@ namespace Infrastructure.Repositories
 {
     public interface IBaseRepository<T> where T : class
     {
-        Task<T> GetByIdAsync(int id);
+        public Task<bool> AnyDataExistAsync();
+        Task<T> GetByIdAsync(Guid id);
         Task<IEnumerable<T>> GetAllAsync();
         Task AddAsync(T entity);
+        Task AddAllAsync(IEnumerable<T> entity);
         Task UpdateAsync(T entity);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Guid id);
 
         // Extended functionality
         Task<IEnumerable<T>> GetByConditionAsync(Expression<Func<T, bool>> predicate);

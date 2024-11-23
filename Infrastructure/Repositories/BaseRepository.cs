@@ -21,7 +21,7 @@ namespace Infrastructure.Repositories
         }
 
         // CRUD Operations
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }
@@ -30,10 +30,24 @@ namespace Infrastructure.Repositories
         {
             return await _dbSet.ToListAsync();
         }
+        public async Task<bool> AnyDataExistAsync()
+        {
+            return (await GetPagedListAsync(1,1)).Any();
+        }
 
         public async Task AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddAllAsync(IEnumerable<T> entity)
+        {
+            foreach (var item in entity)
+            {
+                await _dbSet.AddAsync(item);
+
+            }            
             await _context.SaveChangesAsync();
         }
 
@@ -43,7 +57,7 @@ namespace Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
             var entity = await _dbSet.FindAsync(id);
             if (entity != null)

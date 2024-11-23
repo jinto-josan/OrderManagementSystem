@@ -11,12 +11,14 @@ namespace Domain.Entities
         public DateTime ReturnDate {  get; set; }
         public string? Reason {  get; set; }
 
-        public Guid OrderRef {  get; init; }
+        public Guid OrderRef {  get; private set; }
 
-        public ReturnOrder()
+        public ReturnOrder():base(OrderStatus.ReturnProcessing)
         { //Todo: Order id to reference set pending
-            SetStatus(OrderStatus.ReturnProcessing);
         }
+
+        public void SetOrderRef(Guid orderRef) => OrderRef = orderRef;
+       
 
         public void RejectReturn()=> SetStatus(OrderStatus.ReturnRejected);
         

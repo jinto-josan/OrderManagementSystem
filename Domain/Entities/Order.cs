@@ -10,8 +10,15 @@ namespace Domain.Entities
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public IEnumerable<OrderItem> OrderItems { get; private set; }
-        public OrderStatus Status { get; private set; }
+        public IEnumerable<OrderItem> OrderItems { get;  set; }
+        public OrderStatus? Status { get; private set; }
+
+        public Order(OrderStatus? status) {
+            if(status is null)
+                Status = OrderStatus.Pending;
+            else
+                Status=status;
+        }
 
         public void UpdateStatus()
         {
@@ -26,7 +33,7 @@ namespace Domain.Entities
             if (Status is (OrderStatus.Shipped or (> OrderStatus.ReturnProcessing))) 
                 throw new InvalidOperationException("Order cant be cancelled after shipped, please return it");    
             this.Status=OrderStatus.Cancelled;
-        }
+        } 
 
         protected void SetStatus(OrderStatus status) => Status = status;
         
