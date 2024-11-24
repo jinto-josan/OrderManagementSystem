@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Entities.Enums;
 using Domain.Extensions;
 using Domain.ValueObjects;
 

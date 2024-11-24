@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Entities.Enums;
 using Infrastructure.Repositories;
 
 namespace Services

@@ -1,5 +1,6 @@
 
 using Infrastructure.Contexts;
+using Services.EventHandler;
 using Services.Extenstions;
 using Services.Mapper;
 
@@ -15,6 +16,7 @@ namespace Api
             builder.Services.AddDbContext<ApplicationDbContext>();
             builder.Services.ConfigureAutoMapperServices();
             builder.Services.ConfigureBsnsServices();
+            builder.Services.RegisterEventHandlers();
 
             builder.Services.AddHttpClient();
 
@@ -31,7 +33,7 @@ namespace Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.Services.GetServices<IEagerSingleton>();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

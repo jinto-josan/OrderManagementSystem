@@ -14,6 +14,11 @@ namespace Services
 
 
         public  Task<Order> GetOrderByIdAsync(Guid orderId);
+
+        public void TestInterface()
+        {
+            Console.WriteLine("Handled the method call");
+        }
         
     }
 

@@ -17,16 +17,21 @@ namespace Services
             _userRepository = userRepository;
         }
 
-        public async Task<User> RegisterUserAsync(string name, string email, string password, string role="Customer")
+        public async Task<User> RegisterUserAsync(string name, string email, string password)
         {
-            var user = new User ( name, email,  password,  role );
+            var user = new User ( name, email,  password );
             await _userRepository.AddAsync(user);
             return user;
         }
        
-        public async Task<User> GetUserByIdAsync(Guid userId)
+        public async Task<User> GetUserByEmail(string email)
         {
-            return await _userRepository.GetByIdAsync(userId);
+            return await _userRepository.GetUserByEmail(email);
+        }
+
+        public Task<User> GetUserByIdAsync(Guid userId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

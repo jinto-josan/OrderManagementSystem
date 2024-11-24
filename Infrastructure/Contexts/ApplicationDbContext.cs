@@ -18,12 +18,8 @@ namespace Infrastructure.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!File.Exists("../Infrastructure/localDBFiles/localdb.db"))
-                throw new FileNotFoundException("SQLliteFileNotFound");
+            
             optionsBuilder.UseSqlite("Data Source=../Infrastructure/localDBFiles/localdb.db");
-
-
-            //base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,6 +33,7 @@ namespace Infrastructure.Contexts
 
             modelBuilder.Entity<User>().HasMany<Order>().WithOne().HasForeignKey(o=>o.UserId);
             modelBuilder.Entity<User>().OwnsOne(p=>p.Address);
+            modelBuilder.Entity<User>().HasIndex(p => p.Email).IsUnique();
 
         }
 

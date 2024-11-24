@@ -9,5 +9,6 @@ namespace Infrastructure.Repositories
 {
     public interface IUserRepository:IBaseRepository<User>
     {
+        public Task<User> GetUserByEmail(string email);
     }
 }

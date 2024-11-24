@@ -5,11 +5,13 @@ namespace Infrastructure.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-
-        private readonly ApplicationDbContext _context;
         public UserRepository(ApplicationDbContext context):base(context)
         {
-            _context = context;
+        }
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+            return (await GetByConditionAsync(x => x.Email == email)).FirstOrDefault();
         }
     }
 }

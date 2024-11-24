@@ -12,7 +12,7 @@ namespace Services
     {
 
 
-        public Task<User> RegisterUserAsync(string name, string email, string password, string role);
+        public Task<User> RegisterUserAsync(string name, string email, string password);
 
 
 
