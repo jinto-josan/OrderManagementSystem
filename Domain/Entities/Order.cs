@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Entities.Enums;
 
 namespace Domain.Entities
 {
@@ -11,13 +12,10 @@ namespace Domain.Entities
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public IEnumerable<OrderItem> OrderItems { get;  set; }
-        public OrderStatus? Status { get; private set; }
+        public OrderStatus Status { get; private set; }
 
-        public Order(OrderStatus? status) {
-            if(status is null)
-                Status = OrderStatus.Pending;
-            else
-                Status=status;
+        public Order(OrderStatus status=OrderStatus.Pending) {
+            Status = status;
         }
 
         public void UpdateStatus()

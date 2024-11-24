@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Domain.Entities.Enums
 {
     public enum MTransactionStatus
     {
@@ -20,7 +20,7 @@ namespace Domain.Entities
         Refunded,   //On Dispute fund returned
         PartiallyRefunded,  //Partial refund
         ChargeBack, //Reversal of payment by credit card issuer due to fraud, initiated by cardholder
-        
-        
+
+
     }
 }
