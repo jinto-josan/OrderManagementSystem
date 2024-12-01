@@ -1,6 +1,6 @@
 @Api_HostAddress = http://localhost:5157
 
-GET {{Api_HostAddress}}/product/
+GET {{Api_HostAddress}}/product/listAllProducts?category=jewelery&&stock=0
 Accept: application/json
 
 ###

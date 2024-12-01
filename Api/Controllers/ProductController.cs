@@ -28,12 +28,22 @@ namespace Api.Controllers
             return Created();            
         }
 
-        [HttpGet(Name = "GetAllProducts")]
-        //[Route("get")]
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        [HttpGet("listAllProducts")]
+        public async Task<IEnumerable<Product>> ListAllProducts()
         {
-            return await _productService.GetAllProductAsync();
+            List<string> arr=new List<string>();
+            foreach(var param in Request.Query)
+            {
+               arr.Add($"{param.Key} eq {param.Value}");
+                arr.Add("and");
+            }
+            arr.RemoveAt(arr.Count-1);
+
+                return await _productService.GetAllProductAsync(arr.ToArray());
         }
+
+
+
 
         [HttpDelete(Name = "DeleteAllProducts")]
         //[Route("delete")]

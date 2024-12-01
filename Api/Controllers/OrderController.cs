@@ -13,6 +13,16 @@ namespace Api.Controllers
         public OrderController(EventPublisher<OrderStatusEvent> command) {
             _command=command;
         }
+
+        [HttpGet]
+        
+
+
+
+
+
+
+
         [HttpPut]
         public IActionResult PutCommand()
         {

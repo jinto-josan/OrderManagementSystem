@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Domain.ValueObjects;
 using Infrastructure.Repositories;
+using Services;
 using Services.Dto;
 using System.Net.Http.Json;
 
@@ -37,10 +38,17 @@ public class ProductService:IProductService
             await _productRepository.DeleteAsync(item.Id);
     }
 
-    public async Task<IEnumerable<Product>> GetAllProductAsync()
+    public async Task<IEnumerable<Product>> GetAllProductAsync(string[] filter)
     {
-        return await _productRepository.GetAllAsync();
+        if(filter is null)
+            return await _productRepository.GetAllAsync();
+        return await _productRepository.GetByConditionAsync(
+            new FilterBuilder<Product>(filter).Build()
+            );
+            
     }
+
+
 
     public async Task<Product> CreateProductAsync(string name, Money price, int stock,string imageUrl)
     {
