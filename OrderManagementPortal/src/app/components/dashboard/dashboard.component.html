@@ -1,0 +1,59 @@
+<div class="dashboard">
+  <!-- Metric Cards -->
+  <div class="metrics-container">
+    <mat-card>
+      <h3>Total Orders</h3>
+      <p>1,234</p>
+    </mat-card>
+    <mat-card>
+      <h3>Revenue</h3>
+      <p>$12,345</p>
+    </mat-card>
+    <mat-card>
+      <h3>Active Users</h3>
+      <p>456</p>
+    </mat-card>
+    <mat-card>
+      <h3>Inventory Items</h3>
+      <p>89</p>
+    </mat-card>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-container">
+    <mat-card>
+      <h3>Sales Trend</h3>
+      <ngx-charts-line-chart
+        [view]="view"
+        [scheme]="'aqua'"
+        [results]="salesData"
+        [gradient]="true"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="false"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxisLabel]="'Month'"
+        [yAxisLabel]="'Sales'"
+        [autoScale]="true">
+      </ngx-charts-line-chart>
+    </mat-card>
+    <mat-card>
+      <h3>User Activity</h3>
+      <ngx-charts-bar-vertical
+        [view]="view"
+        [scheme]="'aqua'"
+        [results]="userActivityData"
+        [gradient]="false"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="false"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxisLabel]="'Day'"
+        [yAxisLabel]="'Users'"
+        [roundEdges]="true">
+      </ngx-charts-bar-vertical>
+    </mat-card>
+  </div>
+</div>

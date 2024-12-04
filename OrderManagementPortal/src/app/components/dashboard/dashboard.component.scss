@@ -1,0 +1,29 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+}
+
+.metrics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+mat-card {
+  padding: 16px;
+  text-align: center;
+}
+
+ngx-charts-line-chart,
+ngx-charts-bar-vertical {
+  width: 100%;
+  height: 300px;
+}
