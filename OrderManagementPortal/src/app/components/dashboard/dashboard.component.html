@@ -1,31 +1,48 @@
 <div class="dashboard">
-  <!-- Metric Cards -->
+  <!-- Metrics Cards -->
   <div class="metrics-container">
     <mat-card>
       <h3>Total Orders</h3>
-      <p>1,234</p>
+      <p>{{ totalOrders }}</p>
     </mat-card>
     <mat-card>
       <h3>Revenue</h3>
-      <p>$12,345</p>
+      <p>{{ revenue | currency }}</p>
     </mat-card>
     <mat-card>
       <h3>Active Users</h3>
-      <p>456</p>
+      <p>{{ activeUsers }}</p>
     </mat-card>
     <mat-card>
-      <h3>Inventory Items</h3>
-      <p>89</p>
+      <h3>Low Stock Items</h3>
+      <p>{{ lowStockItems }}</p>
     </mat-card>
   </div>
 
   <!-- Charts -->
   <div class="charts-container">
     <mat-card>
+      <h3>Sales and User Activity</h3>
+      <ngx-charts-combo-chart
+        [scheme]="'cool'"
+        [results]="combinedData"
+        [gradient]="true"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="true"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxisLabel]="'Time Period'"
+        [yAxisLabel]="'Values'"
+        [autoScale]="true">
+      </ngx-charts-line-chart>
+    </mat-card>
+  </div>
+  <!-- <div class="charts-container">
+    <mat-card class="graph-card">
       <h3>Sales Trend</h3>
       <ngx-charts-line-chart
-        [view]="view"
-        [scheme]="'aqua'"
+        [scheme]="'cool'"
         [results]="salesData"
         [gradient]="true"
         [xAxis]="true"
@@ -38,13 +55,12 @@
         [autoScale]="true">
       </ngx-charts-line-chart>
     </mat-card>
-    <mat-card>
+    <mat-card class="graph-card">
       <h3>User Activity</h3>
       <ngx-charts-bar-vertical
-        [view]="view"
-        [scheme]="'aqua'"
+        [scheme]="'cool'"
         [results]="userActivityData"
-        [gradient]="false"
+        [gradient]="true"
         [xAxis]="true"
         [yAxis]="true"
         [legend]="false"
@@ -52,8 +68,9 @@
         [showYAxisLabel]="true"
         [xAxisLabel]="'Day'"
         [yAxisLabel]="'Users'"
+        
         [roundEdges]="true">
       </ngx-charts-bar-vertical>
     </mat-card>
-  </div>
+  </div> -->
 </div>

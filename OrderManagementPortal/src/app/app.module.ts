@@ -15,9 +15,10 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
+import { ComboChartComponent } from './components/combo-chart/combo-chart.component';
 
 @NgModule({
-  declarations: [AppComponent,DashboardComponent],
+  declarations: [AppComponent,DashboardComponent,ComboChartComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
