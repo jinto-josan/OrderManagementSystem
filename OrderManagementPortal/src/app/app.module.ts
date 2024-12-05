@@ -16,9 +16,14 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
 import { ComboChartComponent } from './components/combo-chart/combo-chart.component';
+import { ComboSeriesVerticalComponent } from './components/combo-chart/combo-series-vertical.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 
 @NgModule({
-  declarations: [AppComponent,DashboardComponent,ComboChartComponent],
+  declarations: [AppComponent,DashboardComponent,
+    ComboChartComponent,ComboSeriesVerticalComponent,
+    NavMenuComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -30,9 +35,9 @@ import { ComboChartComponent } from './components/combo-chart/combo-chart.compon
     MatCardModule,
     NgxChartsModule,
     MatMenuModule,
+    MatListModule,
     MatBadgeModule,
-    MatButtonModule
-  ],
+    MatButtonModule],
   bootstrap: [AppComponent],
   providers: [
     provideAnimationsAsync()

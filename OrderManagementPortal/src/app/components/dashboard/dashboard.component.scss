@@ -27,15 +27,14 @@ mat-card {
   p{
     font-weight: bold;
   }
+  div{
+    height: 100%;
+  }
+  
 }
-.graph-card {
-  height: 300px;
+.chart-card {
+  height:60vh;
   padding: 0px;
 }
 
-
-ngx-charts-line-chart,
-ngx-charts-bar-vertical {
-  width: 100%; /* Ensure chart width matches its parent container */
-}
 

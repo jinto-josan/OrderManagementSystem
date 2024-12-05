@@ -1,46 +1,8 @@
-<mat-sidenav-container>
-  <!-- Sidenav -->
-  <mat-sidenav   [mode]="'side'" [opened]="true" 
-  [class.collapsed]="isCollapsed">
-    <!-- <mat-toolbar color="primary" class="sidenav-toolbar">
-      <button mat-icon-button (click)="toggleSidenav()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </mat-toolbar> -->
-    <mat-nav-list>
-      <a mat-list-item (click)="toggleSidenav()">
-        <mat-icon>menu</mat-icon>
-        
-      </a>
-      <a mat-list-item routerLink="/dashboard">
-        <mat-icon>dashboard</mat-icon>
-        <span *ngIf="!isCollapsed">Dashboard</span>
-      </a>
-      <a mat-list-item routerLink="/orders">
-        <mat-icon>shopping_cart</mat-icon>
-        <span *ngIf="!isCollapsed">Orders</span>
-      </a>
-      <a mat-list-item routerLink="/inventory">
-        <mat-icon>inventory</mat-icon>
-        <span *ngIf="!isCollapsed">Inventory</span>
-      </a>
-      <a mat-list-item routerLink="/users">
-        <mat-icon>group</mat-icon>
-        <span *ngIf="!isCollapsed">Users</span>
-      </a>
-      <a mat-list-item routerLink="/finance">
-        <mat-icon>attach_money</mat-icon>
-        <span *ngIf="!isCollapsed">Finance</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
 
-  <!-- Main Content -->
-  <mat-sidenav-content id="content" [class.collapsed]="isCollapsed">
-    <mat-toolbar color="primary">
 
-      <span class="spacer"></span>
+<app-nav-menu [menuItems]="menuItems">
 
+  <ng-container toolbar-right>
       <button
         mat-icon-button
         [matMenuTriggerFor]="notificationsMenu"
@@ -55,14 +17,12 @@
       <button mat-icon-button [matMenuTriggerFor]="profileMenu">
         <mat-icon>account_circle</mat-icon>
       </button>
-      
-      
-    </mat-toolbar>
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </ng-container>
+  <ng-container content>
+    <router-outlet></router-outlet>
+  </ng-container>
+
+</app-nav-menu>
 
 
 <mat-menu #profileMenu="matMenu">
@@ -76,16 +36,6 @@
   </button>
 </mat-menu>
 
-<mat-menu #notificationsMenu="matMenu">
-  <div *ngIf="notifications.length > 0; else noNotifications">
-    <mat-list>
-      <mat-list-item *ngFor="let notification of notifications">
-        <p>{{ notification }}</p>
-      </mat-list-item>
-    </mat-list>
-  </div>
-  
-</mat-menu>
 
 <mat-menu #notificationsMenu="matMenu">
   <div *ngIf="notifications.length > 0; else noNotifications">

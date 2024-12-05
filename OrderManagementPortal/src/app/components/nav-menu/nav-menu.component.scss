@@ -1,0 +1,58 @@
+$collapsedWidth: 5vw;
+$nonCollapsedWidth: 20vw;
+
+mat-sidenav-container{
+    height: 100vh;
+}
+
+mat-sidenav{
+  width: $nonCollapsedWidth;
+  transition: width 0.3s;
+  mat-nav-list mat-icon {
+    margin-right: 16px;
+    transition: margin-right 0.3s;
+  }
+  &.collapsed{
+    width: $collapsedWidth;
+    mat-nav-list span {
+      display: none;
+    }
+    mat-nav-list mat-icon {
+      margin-right: 0;
+    }
+  }
+  /* Toolbar inside sidenav */
+  // .sidenav-toolbar {
+  //   display: flex;
+  //   align-items: center;
+  //   height: 64px;
+  //   padding: 0 16px;
+  //   transition: all 0.3s;
+  //   button {
+  //     margin-right: 16px;
+  //   }
+  // }
+
+}
+
+mat-sidenav-content {
+  margin-left: $nonCollapsedWidth !important; /* Default margin for expanded sidenav */
+  transition: margin-left 0.3s;
+  overflow-x: hidden;
+  &.collapsed{
+    margin-left: $collapsedWidth !important; /* Margin for collapsed sidenav */
+  }
+
+  mat-toolbar {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+  }
+  .content {
+    padding: 16px;
+    transition: margin-left 0.3s;
+  }
+}
+.spacer {
+  flex: 1;
+}

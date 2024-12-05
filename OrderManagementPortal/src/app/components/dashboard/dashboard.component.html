@@ -19,24 +19,69 @@
     </mat-card>
   </div>
 
+
+
   <!-- Charts -->
+   <div class="charts-container">
+    <!-- Combined KPI Chart -->
+    <mat-card class="chart-card">
+      <h3>Revenue, Orders & Users (Current Month)</h3>
+      <div>
+        <ngx-charts-bar-vertical-2d
+          [scheme]="'cool'"
+          [results]="kpiPerCategory"
+          [gradient]="true"
+          [xAxis]="true"
+          [legend]="true"
+          [legendTitle]="'KPIs'">
+        </ngx-charts-bar-vertical-2d>
+    </div>
+    </mat-card> 
+    
+   </div>
   <div class="charts-container">
-    <mat-card>
+    <mat-card class="chart-card">
       <h3>Sales and User Activity</h3>
-      <ngx-charts-combo-chart
-        [scheme]="'cool'"
-        [results]="combinedData"
+      <div>
+     <combo-chart-component
+     [scheme]="'cool'"
+     [colorSchemeLine]="'cool'"
+        [results]="barchartData"
+        [lineChart]="lineChartData"
         [gradient]="true"
         [xAxis]="true"
         [yAxis]="true"
-        [legend]="true"
+        [legend]="false"
         [showXAxisLabel]="true"
         [showYAxisLabel]="true"
-        [xAxisLabel]="'Time Period'"
-        [yAxisLabel]="'Values'"
-        [autoScale]="true">
-      </ngx-charts-line-chart>
+        [showRightYAxisLabel]="true"  
+        [xAxisLabel]="'Month'"
+        [yAxisLabel]="'UserActivity'"
+        [autoScale]="true"
+        [animations]="true"
+     >
+
+     </combo-chart-component>
+    </div>
     </mat-card>
+
+    <mat-card class="chart-card">
+      <h3>Monthly Order Fulfillment</h3>
+      <div>
+        <ngx-charts-bar-vertical-stacked
+          [scheme]="'cool'"
+          [results]="orderFulfillmentData"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="true"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="true"
+          [xAxisLabel]="'Month'"
+          [yAxisLabel]="'Orders'"
+          [animations]="true">
+        </ngx-charts-bar-vertical-stacked>
+      </div>
+      </mat-card>
   </div>
   <!-- <div class="charts-container">
     <mat-card class="graph-card">

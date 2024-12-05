@@ -1,3 +1,4 @@
+//@ts-nocheck
 import {
   Component,
   Input,
@@ -48,18 +49,18 @@ export class ComboChartComponent extends BaseChartComponent {
   @Input() gradient: boolean;
   @Input() showGridLines: boolean = true;
   @Input() activeEntries: any[] = [];
-  @Input() declare schemeType: ScaleType;
+  @Input() declare schemeType: ScaleType=ScaleType.Ordinal;
   @Input() xAxisTickFormatting: any;
   @Input() yAxisTickFormatting: any;
   @Input() yRightAxisTickFormatting: any;
   @Input() roundDomains: boolean = false;
-  @Input() colorSchemeLine: Color;
+  @Input() colorSchemeLine: Color|string;
   @Input() autoScale: any;
   @Input() lineChart: any;
   @Input() yLeftAxisScaleFactor: any;
   @Input() yRightAxisScaleFactor: any;
   @Input() rangeFillOpacity: number;
-  @Input() animations: boolean = true;
+  @Input() override animations: boolean = true;
   @Input() noBarWhenZero: boolean = true;
   @Input() wrapTicks = false;
 
@@ -93,7 +94,7 @@ export class ComboChartComponent extends BaseChartComponent {
   combinedSeries: { name: any; series: any; }[];
   xSet: any[];
   filteredDomain: any;
-  hoveredVertical: null;
+  hoveredVertical: boolean;
   yOrientLeft = Orientation.Left;
   yOrientRight = Orientation.Right;
   legendSpacing = 0;
@@ -104,7 +105,7 @@ export class ComboChartComponent extends BaseChartComponent {
     return `${item.name}`;
   }
 
-  update(): void {
+  override update(): void {
     super.update();
     this.dims = calculateViewDimensions({
       width: this.width,
@@ -390,9 +391,9 @@ export class ComboChartComponent extends BaseChartComponent {
     this.update();
   }
 
-  onActivate(item: { name: any; value: any; series: any; }) {
+  onActivate(item: { name: any}) {
     const idx = this.activeEntries.findIndex(d => {
-      return d.name === item.name && d.value === item.value && d.series === item.series;
+      return d.name === item.name ;
     });
     if (idx > -1) {
       return;
@@ -402,9 +403,9 @@ export class ComboChartComponent extends BaseChartComponent {
     this.activate.emit({ value: item, entries: this.activeEntries });
   }
 
-  onDeactivate(item: { name: any; value: any; series: any; }) {
+  onDeactivate(item: { name: any }) {
     const idx = this.activeEntries.findIndex(d => {
-      return d.name === item.name && d.value === item.value && d.series === item.series;
+      return d.name === item.name ;
     });
 
     this.activeEntries.splice(idx, 1);
