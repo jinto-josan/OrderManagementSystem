@@ -1,1 +1,65 @@
-<p>orders works!</p>
+<div class="orders-page">
+  <!-- Search and Filter Bar -->
+  <div class="search-filter-bar">
+    <mat-form-field appearance="outline" class="search-bar">
+      <mat-label>Search Orders</mat-label>
+      <input matInput (input)="onSearch($event)" placeholder="Search by Order ID, User Name or product" />
+      <button mat-icon-button matSuffix>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-bar">
+      <mat-label>Filter by Status</mat-label>
+      <mat-select [(value)]="selectedStatus" (selectionChange)="onFilterChange()">
+        <mat-option *ngFor="let status of orderStatuses" [value]="status">{{ status }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" (click)="createOrder()">Create Order</button>
+      <button mat-raised-button color="accent" (click)="exportOrders()">Export Orders</button>
+    </div>
+  </div>
+
+  <!-- Orders Grid -->
+  <div class="orders-container">
+    <mat-card [class.is-order-late]="order?.isLate" *ngFor="let order of filteredOrders">
+
+      <div class="order-header">
+        <h4>#{{ order.id }}</h4>
+        <p class="status">{{order.status}}</p>
+        <div class="spacer"></div>
+        <p>{{ order.total | currency }}</p>
+      </div>
+      
+      <div class="order-items">
+        <p>{{ getOrderItemsString(order.items) }}</p>
+      </div>
+      
+
+      <!-- Order Progress -->
+      <div class="order-progress" *ngIf="order.invoiceDate">
+        <div  class="order-dates mat-label-medium">
+          <p>{{ order.invoiceDate | date }}</p>
+          <div class="spacer"></div>
+          <p *ngIf="order.deliveryDate"> {{ order.deliveryDate | date }}</p>
+        </div>
+        
+        <mat-progress-bar mode="determinate" [value]="dayProgressFromDispatch(order)"></mat-progress-bar>
+   
+        
+      </div>
+
+      <div class="order-footer">
+        <!-- Profile Icon -->
+        <p class="profile-icon">{{ getUserInitials(order.user) }}</p>
+        <p class="profile-name">{{ order.user }}</p>
+        <div class="spacer"></div>          
+        <button mat-icon-button (click)="toggleOrderDetails(order)">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

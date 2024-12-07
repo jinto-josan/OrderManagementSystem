@@ -15,17 +15,26 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
 import { ComboChartComponent } from './components/combo-chart/combo-chart.component';
 import { ComboSeriesVerticalComponent } from './components/combo-chart/combo-series-vertical.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { CommonModule } from '@angular/common';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
-  declarations: [AppComponent,DashboardComponent,
+  declarations: [AppComponent,
+    DashboardComponent, OrdersComponent,
     ComboChartComponent,ComboSeriesVerticalComponent,
     NavMenuComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatSidenavModule,
@@ -37,6 +46,13 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
     MatMenuModule,
     MatListModule,
     MatBadgeModule,
+
+  //Form modules for mat
+    MatOptionModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressBarModule,
     MatButtonModule],
   bootstrap: [AppComponent],
   providers: [

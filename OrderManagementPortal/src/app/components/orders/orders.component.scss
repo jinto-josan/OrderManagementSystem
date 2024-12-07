@@ -1,0 +1,85 @@
+@use '@angular/material' as mat;
+@use '../../../styles.scss' as sty;
+.orders-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  .search-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    .search-bar,.filter-bar {
+      flex: 1;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+  }
+  
+}
+
+.orders-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,25vw);
+  gap: 16px;
+  mat-card{
+    justify-content: space-between;
+    padding: 0 1vw 0 1vw;
+    gap: 8px;
+    .order-header {
+      display: flex;
+      align-items:flex-start; 
+      align-items: center;
+      .status{
+        border-left: 4px solid;
+        margin-left: 10px;
+        padding-left: 8px;
+        border-color: mat.get-theme-color(sty.$OrderManagementPortal-theme,'neutral',80);
+
+      }
+    }
+    .order-items{
+      overflow-x: clip;
+    }
+    .order-progress{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      .order-dates{
+        display: flex;
+      }
+      
+    }
+    .order-footer{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap:8px;
+    }
+  
+  }
+  
+}
+.is-order-late{
+  box-shadow: 0 7px 2px mat.get-theme-color(sty.$OrderManagementPortal-theme,'error',50);
+  background-color: mat.get-theme-color(sty.$OrderManagementPortal-theme,'error',90);
+}
+
+.spacer {
+  flex: 1;
+}
+.profile-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: mat.get-theme-color(sty.$OrderManagementPortal-theme,'primary',70);
+  color: mat.get-theme-color(sty.$OrderManagementPortal-theme,'on-primary');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+} 
+
