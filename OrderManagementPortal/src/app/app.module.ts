@@ -16,6 +16,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 import { ComboChartComponent } from './components/combo-chart/combo-chart.component';
 import { ComboSeriesVerticalComponent } from './components/combo-chart/combo-series-vertical.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
@@ -25,16 +27,23 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { InventoryComponent } from './components/inventory/inventory.component';
+import { EditDialogComponent } from './components/inventory/edit-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddProductDialogComponent } from './components/inventory/add-product-dialog/add-product-dialog.component';
 
 @NgModule({
   declarations: [AppComponent,
-    DashboardComponent, OrdersComponent,
+    DashboardComponent, OrdersComponent, InventoryComponent,
+    EditDialogComponent, AddProductDialogComponent,
     ComboChartComponent,ComboSeriesVerticalComponent,
     NavMenuComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatSidenavModule,
@@ -46,6 +55,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatMenuModule,
     MatListModule,
     MatBadgeModule,
+    MatPaginatorModule,
+    MatTableModule,
 
   //Form modules for mat
     MatOptionModule,
