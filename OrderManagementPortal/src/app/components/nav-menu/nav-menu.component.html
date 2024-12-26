@@ -14,7 +14,7 @@
           
         </a>
         @for(item of menuItems(); track item.name){
-        <mat-list-item routerLink="/{{item.link}}" [activated]="item.isActive??false">
+        <mat-list-item routerLink="/{{item.link[0]}}" [activated]="item.isActive??false">
           <mat-icon>{{item.icon}}</mat-icon>
           <span *ngIf="!isCollapsed">{{item.name}}</span>
         </mat-list-item>

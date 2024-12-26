@@ -10,11 +10,11 @@ export class AppComponent {
 
 
   menuItems:MenuItem[]=[
-    {icon:'home',name:'Dashboard',link:'/dashboard'},
-    {icon:'shopping_cart',name:'Orders',link:'/orders'},
-    {icon:'store',name:'Inventory',link:'/inventory'},
-    {icon:'group',name:'Users',link:'/users'},
-    {icon:'attach_money',name:'Finance',link:'/finance'},
+    {icon:'home',name:'Dashboard',link:['/dashboard']},
+    {icon:'shopping_cart',name:'Orders',link:['/orders','/create-order','/order-summary']},
+    {icon:'store',name:'Inventory',link:['/inventory','/add-product']},
+    {icon:'group',name:'Users',link:['/users']},
+    {icon:'attach_money',name:'Finance',link:['/finance']},
   ]
 
 
