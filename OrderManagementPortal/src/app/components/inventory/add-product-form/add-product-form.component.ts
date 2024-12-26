@@ -1,22 +1,18 @@
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-product-dialog',
-  templateUrl: './add-product-dialog.component.html',
-  styleUrls: ['./add-product-dialog.component.scss']
+  selector: 'app-add-product',
+  templateUrl: './add-product-form.component.html',
+  styleUrls: ['./add-product-form.component.scss']
 })
-export class AddProductDialogComponent {
+export class AddProductFormComponent {
   addProductForm: FormGroup;
-  imagePreviews: string[] = []; // Holds image previews
+  imagePreviews: string[] = [];
+  categories: string[] = ['Electronics', 'Furniture', 'Appliances']; // Sample categories
 
-  constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<AddProductDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public categories: string[]
-  ) {
-    // Initialize the form
+  constructor(private fb: FormBuilder, private router: Router) {
     this.addProductForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -25,7 +21,7 @@ export class AddProductDialogComponent {
       stock: ['', [Validators.required, Validators.min(0)]],
       weight: ['', [Validators.required, Validators.min(0)]],
       size: ['', Validators.required],
-      images: [[]] // Array to hold uploaded files
+      images: [[]]
     });
   }
 
@@ -33,21 +29,16 @@ export class AddProductDialogComponent {
     const files = (event.target as HTMLInputElement).files;
     if (!files) return;
 
-    // Allow up to 5 images
     const imagesArray = Array.from(files).slice(0, 5);
     this.addProductForm.patchValue({ images: imagesArray });
 
-    // Generate previews
     this.imagePreviews = imagesArray.map(file => URL.createObjectURL(file));
-  }
-
-  onCancel(): void {
-    this.dialogRef.close();
   }
 
   onSubmit(): void {
     if (this.addProductForm.valid) {
-      this.dialogRef.close(this.addProductForm.value);
+      // Navigate back to inventory page
+      this.router.navigate(['/inventory'], { state: { newProduct: this.addProductForm.value } });
     }
   }
 }

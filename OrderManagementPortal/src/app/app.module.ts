@@ -30,12 +30,13 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { EditDialogComponent } from './components/inventory/edit-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddProductDialogComponent } from './components/inventory/add-product-dialog/add-product-dialog.component';
+import { AddProductFormComponent } from './components/inventory/add-product-form/add-product-form.component';
+import { CreateOrderFormComponent } from './components/orders/create-order-form/create-order-form.component';
 
 @NgModule({
   declarations: [AppComponent,
-    DashboardComponent, OrdersComponent, InventoryComponent,
-    EditDialogComponent, AddProductDialogComponent,
+    DashboardComponent, OrdersComponent, CreateOrderFormComponent, InventoryComponent,
+    EditDialogComponent, AddProductFormComponent,
     ComboChartComponent,ComboSeriesVerticalComponent,
     NavMenuComponent
   ],

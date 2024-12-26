@@ -17,7 +17,6 @@ export class NavMenuComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe(val => {
       if(val instanceof NavigationEnd){
-        console.log(val.urlAfterRedirects.split('?')[0],this.menuItems());
         this.menuItems().forEach(e => e.isActive = e.link === val.urlAfterRedirects.split('?')[0]);
       }
    })

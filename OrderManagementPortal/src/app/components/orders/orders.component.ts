@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -13,6 +14,7 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     this.filterOrders();
   }
+  constructor(private router:Router) {}
 
 
   orders = [
@@ -82,9 +84,6 @@ export class OrdersComponent implements OnInit {
     this.filterOrders();
   }
 
-  createOrder(): void {
-    console.log('Create Order clicked');
-  }
 
   exportOrders(): void {
     console.log('Export Orders clicked');

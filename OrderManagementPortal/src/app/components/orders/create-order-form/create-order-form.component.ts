@@ -1,17 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { EditDialogComponent } from './edit-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-inventory',
-  templateUrl: './inventory.component.html',
-  styleUrls: ['./inventory.component.scss']
+  selector: 'app-create-order-form',
+  templateUrl: './create-order-form.component.html',
+  styleUrl: './create-order-form.component.scss'
 })
-export class InventoryComponent implements OnInit {
+export class CreateOrderFormComponent implements OnInit {
   // Table Data
   products = [
     {
@@ -60,7 +59,7 @@ export class InventoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private router:Router, private route:ActivatedRoute) {}
+  constructor(private dialog: MatDialog, private router:Router) {}
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -84,25 +83,22 @@ export class InventoryComponent implements OnInit {
     }
   }
 
-  // Add New Product
-  openAddProductPage(): void {
-      this.router.navigate(['add-product']);
+  increaseQuantity(product: any): void {
+    product.orderQuantity = (product.orderQuantity || 0) + 1;
   }
 
-  // Open Edit Dialog
-  openEditDialog(product: any): void {
-    const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '400px',
-      data: { product }
-    });
+  decreaseQuantity(product: any): void {
+    if (product.orderQuantity > 0) {
+      product.orderQuantity -= 1;
+    }
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Update the product's price and quantity
-        product.price = result.price;
-        product.quantity = result.quantity;
-        this.dataSource.data = [...this.dataSource.data]; // Refresh table
-      }
-    });
+  hasOrderItems(): boolean {
+    return this.products.some(product => product.quantity > 0);
+  }
+
+  goToSummary(): void {
+    const orderItems = this.products.filter(product => product.quantity > 0);
+    this.router.navigate(['/order-summary'], { state: { orderItems } });
   }
 }

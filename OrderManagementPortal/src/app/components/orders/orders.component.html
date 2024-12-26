@@ -17,7 +17,7 @@
     </mat-form-field>
 
     <div class="action-buttons">
-      <button mat-raised-button color="primary" (click)="createOrder()">Create Order</button>
+      <button mat-raised-button color="primary" [routerLink]="'../create-order'">Create Order</button>
       <button mat-raised-button color="accent" (click)="exportOrders()">Export Orders</button>
     </div>
   </div>
