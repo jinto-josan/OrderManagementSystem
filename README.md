@@ -25,8 +25,7 @@ This is a comprehensive full-stack application designed to demonstrate expertise
 ### **2. Real-Time Order Tracking**
 - Dashboard to track orders realtime
 
-![Order Page](./screenshots/orders.png)
-
+![Orders Page](./screenshots/orders.png)
 > **Description:** All orders can be tracked and can be filtered based on products, username, orderstatuses.
 
 ### **3. Order Creation and Summary**
