@@ -17,6 +17,11 @@ This is a comprehensive full-stack application designed to demonstrate expertise
     - Analyze order fulfillment trends over time.
   - **Sales & User Activity:**
     - Combined line and bar charts to showcase user engagement and sales performance.
+
+![Dashboard1](./screenshots/dashboard-1.png)
+![Dashboard2](./screenshots/dashboard-2.png)
+> **Description:** Visualize key performance indicators and trends using D3.js and NGX-Charts.
+
 ### **2. Real-Time Order Tracking**
 - Dashboard to track orders realtime
 
@@ -103,9 +108,7 @@ The **OrderManagement.sln** solution is organized using the **clean architecture
 ## **Screenshots**
 
 ### **1. Analytics Dashboard**
-![Dashboard](./screenshots/dashboard-1.png)(./screenshots/dashboard-2.png)
 
-> **Description:** Visualize key performance indicators and trends using D3.js and NGX-Charts.
 
 ### **2. Orders page to track all orders**
 ![Create Order Page](./screenshots/orders.png)
@@ -123,7 +126,7 @@ The **OrderManagement.sln** solution is organized using the **clean architecture
 > **Description:** Review your order with live updates before confirmation.
 
 ### **5. Inventory Management Page**
-![Inventory Page](./screenshots/inventory-page.png)
+![Inventory Page](./screenshots/inventory.png)
 
 > **Description:** View all products in the inventory, search by name, filter by category, and edit product details.
 
