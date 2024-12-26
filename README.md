@@ -25,12 +25,24 @@ This is a comprehensive full-stack application designed to demonstrate expertise
 ### **2. Real-Time Order Tracking**
 - Dashboard to track orders realtime
 
+![Order Page](./screenshots/orders.png)
+
+> **Description:** All orders can be tracked and can be filtered based on products, username, orderstatuses.
+
 ### **3. Order Creation and Summary**
 - Adjust product quantities in the order dynamically using `+` and `-` buttons.
 - Transition to the **Order Summary Page** for final review of selected items.
 - Implemented **SignalR** for real-time updates.
 - Review and adjust order quantities.
 - Confirm or cancel orders with state preservation for revisions.
+
+![Create Order Page](./screenshots/create-order.png)
+
+> **Description:** Adjust product quantities using `+` and `-` buttons. Navigate to the summary page to finalize the order.
+
+![Order Summary Page](./screenshots/order-summary.png)
+
+> **Description:** Review your order with live updates before confirmation.
 
 ### **4. Inventory Management**
 - **Product Management:**
@@ -42,6 +54,13 @@ This is a comprehensive full-stack application designed to demonstrate expertise
 - **Backend Integration:**
   - CRUD operations handled via RESTful APIs built with **.NET Core**.
 
+![Inventory Page](./screenshots/inventory.png)
+
+> **Description:** View all products in the inventory, search by name, filter by category, and edit product details.
+
+![Add Product Page](./screenshots/add-new-product.png)
+
+> **Description:** Add a new product with details such as name, description, category, price, stock, weight, size, and up to 5 images.
 
 
 
@@ -102,38 +121,6 @@ The **OrderManagement.sln** solution is organized using the **clean architecture
 - **SQLite**:
   - Lightweight relational database for easy configuration and portability.
   - Handles schema migrations and queries seamlessly.
-
----
-
-## **Screenshots**
-
-### **1. Analytics Dashboard**
-
-
-### **2. Orders page to track all orders**
-![Create Order Page](./screenshots/orders.png)
-
-> **Description:** All orders can be tracked and can be filtered based on products, username, orderstatuses.
-
-### **3. Create Order Page**
-![Create Order Page](./screenshots/create-order.png)
-
-> **Description:** Adjust product quantities using `+` and `-` buttons. Navigate to the summary page to finalize the order.
-
-### **4. Order Summary Page**
-![Order Summary Page](./screenshots/order-summary.png)
-
-> **Description:** Review your order with live updates before confirmation.
-
-### **5. Inventory Management Page**
-![Inventory Page](./screenshots/inventory.png)
-
-> **Description:** View all products in the inventory, search by name, filter by category, and edit product details.
-
-### **6. Add Product Page**
-![Add Product Page](./screenshots/add-new-product.png)
-
-> **Description:** Add a new product with details such as name, description, category, price, stock, weight, size, and up to 5 images.
 
 ---
 
