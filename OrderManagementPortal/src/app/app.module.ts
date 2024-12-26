@@ -32,10 +32,11 @@ import { EditDialogComponent } from './components/inventory/edit-dialog.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddProductFormComponent } from './components/inventory/add-product-form/add-product-form.component';
 import { CreateOrderFormComponent } from './components/orders/create-order-form/create-order-form.component';
+import { OrderSummaryComponent } from './components/orders/order-summary/order-summary.component';
 
 @NgModule({
   declarations: [AppComponent,
-    DashboardComponent, OrdersComponent, CreateOrderFormComponent, InventoryComponent,
+    DashboardComponent, OrdersComponent, CreateOrderFormComponent, OrderSummaryComponent, InventoryComponent,
     EditDialogComponent, AddProductFormComponent,
     ComboChartComponent,ComboSeriesVerticalComponent,
     NavMenuComponent

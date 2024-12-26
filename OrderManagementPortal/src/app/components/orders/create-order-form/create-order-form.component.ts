@@ -12,7 +12,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CreateOrderFormComponent implements OnInit {
   // Table Data
-  products = [
+  products:({
+    image: string;
+    name: string;
+    description: string;
+    quantity: number;
+    price: number;
+    dateAdded: Date;
+    category: string;
+    id: number;
+  } &{orderQuantity?:number})[] = [
     {
       id: 1,
       image: 'https://via.placeholder.com/50',
@@ -64,6 +73,17 @@ export class CreateOrderFormComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    const state = history.state;
+    const orderItems = state.orderItems || [];
+
+    // Restore quantities from the returned orderItems
+    if (orderItems.length) {
+      this.products.forEach(product => {
+        const matchedItem = orderItems.find((item: { id: number; }) => item.id === product.id);
+        product.orderQuantity = matchedItem ? matchedItem.orderQuantity : 0;
+      });
+    }
   }
 
   // Filter by Search Query
@@ -84,21 +104,25 @@ export class CreateOrderFormComponent implements OnInit {
   }
 
   increaseQuantity(product: any): void {
+    if(product.quantity === 0) return;
     product.orderQuantity = (product.orderQuantity || 0) + 1;
+    product.quantity--;
   }
 
   decreaseQuantity(product: any): void {
     if (product.orderQuantity > 0) {
       product.orderQuantity -= 1;
+      product.quantity++
     }
+    
   }
 
   hasOrderItems(): boolean {
-    return this.products.some(product => product.quantity > 0);
+    return this.products.some(product => product.orderQuantity &&  product.orderQuantity > 0);
   }
 
   goToSummary(): void {
-    const orderItems = this.products.filter(product => product.quantity > 0);
-    this.router.navigate(['/order-summary'], { state: { orderItems } });
+    const orderItems = this.products.filter(product => product.orderQuantity && product.orderQuantity > 0);
+    this.router.navigate(['order-summary'], { state: { orderItems } });
   }
 }

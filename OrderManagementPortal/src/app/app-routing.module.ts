@@ -7,11 +7,13 @@ import { FinanceComponent } from './components/finance/finance.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddProductFormComponent } from './components/inventory/add-product-form/add-product-form.component';
 import { CreateOrderFormComponent } from './components/orders/create-order-form/create-order-form.component';
+import { OrderSummaryComponent } from './components/orders/order-summary/order-summary.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'orders', component: OrdersComponent },
   {path: 'create-order', component: CreateOrderFormComponent},
+  {path: 'order-summary', component: OrderSummaryComponent},
   { path: 'inventory', component: InventoryComponent}, 
   { path: 'add-product', component: AddProductFormComponent },
   { path: 'users', component: UsersComponent },
